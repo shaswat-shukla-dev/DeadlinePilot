@@ -1,0 +1,22 @@
+runtime: nodejs24
+
+instance_class: F2
+
+automatic_scaling:
+  min_instances: 0
+  max_instances: 5
+  target_cpu_utilization: 0.65
+
+env_variables:
+  NODE_ENV: "production"
+  PORT: "8080"
+  GEMINI_API_KEY: "YOUR_NEW_GEMINI_API_KEY"
+  GOOGLE_CLOUD_PROJECT: "project-a0d89b8e-b9d3-4528-bbf"
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+
+network:
+  session_affinity: true

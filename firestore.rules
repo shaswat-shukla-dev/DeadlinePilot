@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Backend uses a service account (Application Default Credentials) which
+    // bypasses these rules entirely. These rules only matter if the client
+    // SDK ever talks to Firestore directly — kept locked down by default.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
